@@ -1,0 +1,119 @@
+	<!DOCTYPE html>
+<html>
+<head>
+	<title> Fun With jQuery </title>
+	<!--http://ruby.about.com/od/rubyonrails/ss/Rails-Application-Flow.htm -->
+
+	<style>
+		h1 {
+			color: yellow;
+		text-align: center;
+		font-family: arial;
+		font-size: 50px
+		}
+		
+		#centerButtons {
+			vertical-align:  middle;
+			
+			margin: 0 auto;
+		}
+
+		#wrapper {
+			margin: 0 auto;
+			width: 700px;
+		}
+
+		 #wrapper button {
+			padding: 10px 10px; /* padding is space inside button */
+			width: 700px;
+			margin-bottom: 15px;
+			font-size: 14px;
+			font-family: arial;
+			color: blue;
+		}
+		
+		body {
+			background-color: blue;
+		}
+	</style>
+	<script src="https://code.jquery.com/jquery-2.1.0.js"></script>
+</head>
+<body>
+
+	<h1>Fun With jQuery!</h1>
+	
+<div id="centerButtons">
+	<div id="wrapper">
+		<button id="one" data-panelid="panel1" type="button">When you place the mouse over this button it will hide.</button>
+		<button id="two" data-panelid="panel2" type="button">When you click on this button it will fade out and then fade back in.</button>
+		<button id="three" data-panelid="panel3" type="button">When you click this button it will slide up and briefly disappear.</button>
+		<button id="four" data-panelid="panel4" type="button">When you click on this button the text on this button will change.</button>
+		<button id="five" data-panelid="panel5" type="button">When you place the mouse over this button the text and color at the top of the page will change.</button>
+		<button class='example' data-panelid="This is button # 6!" type="button">When you click on this button an alert will pop up telling you that this is button # 6.</button>
+		<button  class='example' data-panelid="This is button # 7!" type="button">When you click on this button an alert will pop up telling you that this is button # 7.</button>
+		<button  id="six" data-panelid="panel8" type="button">When you place the mouse over this button a very important message will appear!</button>
+	</div>
+</div>
+
+
+
+
+
+	<script>
+	$(document).ready(function(){
+
+		$("#one").on('mouseover', function () {
+			$("#one").hide(3000).show(3000);
+		});
+
+		$("#two").on('click', function () {
+			$("#two").fadeOut(3000).fadeIn(3000);
+		});
+
+		$("#three").on('click', function () {
+			$("#three").slideToggle(3000).show(3000);
+		});
+
+		$("#four").on('click', function () {
+			$("#four").html("jQuery changed this text!").show(300);
+		});
+		$("#five").on('mouseover', function () {
+			$('h1').html("jQuery changed this text and color!").css("color", "red");
+		});
+
+		$("#five").on('mouseout', function () {
+			$('h1').html("Fun with jQuery!").css("color", "yellow");
+		});
+
+		$(".example").on('click', function () {
+			var panelid = $(this).attr('data-panelid');
+			alert(panelid);
+		});	
+
+		$("#six").on('mouseover', function () {
+			$("h1").html("Please contact Aaron for an interiew!").css("color", "red");
+			$("#six").html("(919) 985 5660 / aaronstrouse@gmail.com");
+		});
+
+		$("#six").on('mouseout', function () {
+			$("h1").html("Fun with jQuery!").css("color", "yellow");
+			$("#six").html("When you place the mouse over this button a very important message will appear!");
+		});
+
+		$("h1").on('mouseover', function () {
+			$("h1").html("This is what jQuery can do!").show(300);
+		});
+		$("h1").on('mouseout', function () {
+			$("h1").html("Fun With jQuery!").show(300);
+		});
+	});
+	</script>
+
+
+
+
+
+
+
+</body>
+</html>
